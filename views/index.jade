@@ -1,0 +1,165 @@
+extends layout
+
+block head
+    link(rel='stylesheet', type='text/css', href='/stylesheets/siteV1.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/popupPanel.css')
+    script(type='text/javascript', src='/scripts/appContentPopup.js')
+    script(type='text/javascript', src='/scripts/appMasonry.js')
+    script(type='text/javascript', src='/scripts/jquery.textareaExpander.js')
+    script(type='text/javascript', src='/scripts/buzz.js')
+    script(type='text/javascript')
+        var apiBasePath = '#{apiBasePath}',
+            isMobile = #{isMobile};
+        var fileBasePath = apiBasePath + '/file/',
+            //postBasePath = apiBasePath + '/postUpdate/',
+            isLoading = false,
+            popupPostId = '',
+            popupTitle = null,
+            popupDetails = null,
+            rolloverSound = null,
+            popupDetailsExpandEvent = 'textareaExpandTriggered';
+
+        var reloadPosts = function(data){
+            isLoading = true;
+            $.each(data, function(key, value){
+                //postItem(urlMainImage, details, title, postId, actions, comments)
+                postItem(fileBasePath + value.ImageFileId, value.Message, value.Title, value._id) ;
+            });
+            document.loadMasonry();
+            $('.pic img').mouseenter(function(){
+                rolloverSound.play();
+            });
+            $('.pic img').mouseleave(function(){
+                rolloverSound.stop();
+            })
+
+        }
+        //need to protect masonry 
+        $(function(){
+            var $container = $('#column');
+
+            document.loadMasonry = function(){
+                $container.imagesLoaded(function () {
+                    $container.masonry({
+                        itemSelector: '.box',
+                        columnWidth: 0,
+                        isAnimated: true,
+                        animationOptions: {
+                            duration: 400
+                        }
+                    });
+                });
+            }
+
+            document.savePost = function(postId, title, details, imageFileId, sessionId, callback ){
+                var data = {
+                    title: title,
+                    message: details,
+                    imageFileId: imageFileId,
+                    sessionId: sessionId
+                };
+                $.post(apiBasePath + '/postUpdate/' + postId, data).error(function(){
+                    callback(new Error('save failed') );
+                });
+                document.updateBrick(postId, title, details);
+            }
+
+            document.updateBrick = function(postId, title, details){
+                var brick = $('div[postId=' + postId + ']');
+                var dDetails = $('<p/>').append(details.replace(/(\\r\\n|\\n|\\r)/g, "<br />"));
+                dDetails.attr('value', details);
+                brick.find('div.details p').replaceWith( dDetails ) ;
+            }
+
+            document.toSavePost = function(){
+                document.savePost(popupPostId, popupTitle.val(), popupDetails.val(), null, null, function(err, status){
+                    if (err) alert(err);
+                });
+                document.loadMasonry();
+            };
+        });
+        $(document).ready(function(){
+            popupTitle = $('div#popupBody div.popupContent h2 input[name="title"]');
+            popupDetails = $('div#popupBody div.popupContent div.details textarea[name="details"]');
+            popupDetails.textareaExpander({expandEventName:popupDetailsExpandEvent, animate: false });
+            popupDetails.blur(document.toSavePost);
+            popupTitle.blur(document.toSavePost);
+            rolloverSound = new buzz.sound("/media/rollover",{formats:["ogg","mp3"],preload:true});
+            rolloverSound.setVolume(60);
+            rolloverSound.setSpeed(1.2);
+            if (isMobile) {
+                var viewPort = document.createElement('meta');
+                viewPort.name = 'viewport';
+                viewPort.content = 'width=device-width, initial-scale=1.0';
+                document.head.appendChild(viewPort);
+            }
+            //TODO: replace with Session
+            //$.support.cors = true;
+            $.ajax({
+                url: apiBasePath + "/postList/50b198cfaee84a500f000001", 
+                type: 'GET',
+                crossDomain: true,
+                error: function(xhr, status, err){
+                    alert(status + err);
+                },
+                success: reloadPosts, 
+                dataType : "json", 
+                cache: false
+            });
+
+            /*
+            if (!isLoading){
+                var postList = document.createElement('script');
+                postList.type = 'text/javascript';
+                postList.src = apiBasePath + '/postList/50b198cfaee84a500f000001?callback=reloadPosts';
+                document.head.appendChild(postList);
+                document.head.removeChild(postList);
+            }*/
+
+        });
+
+
+block content
+
+    div#column.clearfix
+
+    div#pp
+
+    div#popupContact
+        div#popupBg
+        div#ppHeadBg
+        a#popupContactClose x
+        div#popupBody
+            h1 owner (username)
+            div.popupPic
+                img#popupImg
+            div.popupContent
+                h2
+                    input(type='text',name='title')
+                hr
+                div.details
+                    div#detailsViewer
+                        div#inner
+                    textarea(name='details')
+                div.popupComment.fragment tags here
+                div.popupComment.fragment comments here
+                div.popupComment.fragment comments here
+            div#ppControl
+                a(href='')
+                    img(src='http://cdn-img.easyicon.cn/png/5781/578152.gif', style='width:27px')
+                br
+                a(href='')
+                    img(src='http://cdn-img.easyicon.cn/png/10697/1069720.gif', style='width:27px')
+                br
+                a(href='')
+                    img(src='http://cdn-img.easyicon.cn/png/54/5420.gif', style='width:27px')
+                br
+                a(href='')
+                    img(src='http://cdn-img.easyicon.cn/png/5490/549052.gif', style='width:27px')
+    div#backgroundPopup
+///
+    div#popupPanel
+        div#ppBg
+        a#ppClose x
+        div#ppBody
+    div#ppBackdrop

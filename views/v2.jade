@@ -1,0 +1,26 @@
+extends layout
+
+block head
+    link(rel='stylesheet', type='text/css', href='/stylesheets/siteV1.css')
+    link(rel='stylesheet', type='text/css', href='/scripts/modules/tagit/tagit.css')
+    script(type='text/javascript', src='/scripts/curl.js')
+    script(type='text/javascript', src='/scripts/underscore.min.js')
+    script(type='text/javascript', src='/scripts/backbone.min.js')
+    script(type='text/javascript', src='/scripts/main.js')
+    script(type='text/javascript', src='/scripts/syntaxhighlighter/js/XRegExp.js', defer)
+    script(type='text/javascript', src='/scripts/syntaxhighlighter/js/shCore.js', defer)
+    script(type='text/javascript', src='/scripts/jquery.textareaExpander.js', defer)
+    script(type='text/javascript', src='/scripts/modules/tagit/tagit.js', defer)
+    script(type='text/javascript', src='/scripts/buzz.js', defer)
+    script(type='text/javascript')
+        document.init({
+            apiBasePath : '#{apiBasePath}',
+            isMobile : #{isMobile},
+            userId : '#{userId}'
+        });
+block content
+
+    div#column.clearfix
+    div#pp
+    div#growlHolder
+    div#quickZoomHolder

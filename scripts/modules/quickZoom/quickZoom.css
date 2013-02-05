@@ -1,0 +1,152 @@
+@-webkit-keyframes fade { 
+    0% { opacity: 1 }
+    100% { opacity: 0.25 }
+}
+
+@-moz-keyframes fade { 
+    0% { opacity: 1 }
+    100% { opacity: 0.25 }
+}
+
+#quickZoom figure.spinner {
+	left: -30px;
+    width: 30px;
+    height: 30px;
+	margin: 50px auto;
+}
+
+#quickZoom figure.spinner figure {
+    background: #EB8921;
+    width: 3px;
+    height: 7px;
+    position: absolute;
+	top: 0;
+	left: 0;
+    -webkit-animation: fade 1s linear infinite;
+    -webkit-border-radius: 50px;
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    -moz-animation: fade 1s linear infinite;
+    -moz-border-radius: 50px;
+}
+
+#quickZoom figure.spinner figure.bar1 {
+    -webkit-transform: rotate(0deg) translate(0, -142%);
+    -webkit-animation-delay: 0s;
+    -moz-transform: rotate(0deg) translate(0, -142%);
+    -moz-animation-delay: 0s;
+}
+
+#quickZoom figure.spinner figure.bar2 {
+    -webkit-transform: rotate(30deg) translate(0, -142%);
+    -webkit-animation-delay: -0.9167s;
+    -moz-transform: rotate(30deg) translate(0, -142%);
+    -moz-animation-delay: -0.9167s;
+}
+
+#quickZoom figure.spinner figure.bar3 {
+    -webkit-transform: rotate(60deg) translate(0, -142%);
+    -webkit-animation-delay: -0.833s;
+    -moz-transform: rotate(60deg) translate(0, -142%);
+    -moz-animation-delay: -0.833s;
+}
+
+#quickZoom figure.spinner figure.bar4 {
+    -webkit-transform: rotate(90deg) translate(0, -142%);
+    -webkit-animation-delay: -0.75s;
+    -moz-transform: rotate(90deg) translate(0, -142%);
+    -moz-animation-delay: -0.75s;
+}
+
+#quickZoom figure.spinner figure.bar5 {
+    -webkit-transform: rotate(120deg) translate(0, -142%);
+    -webkit-animation-delay: -0.667s;
+    -moz-transform: rotate(120deg) translate(0, -142%);
+    -moz-animation-delay: -0.667s;
+}
+
+#quickZoom figure.spinner figure.bar6 {
+    -webkit-transform: rotate(150deg) translate(0, -142%);
+    -webkit-animation-delay: -0.5833s;
+    -moz-transform: rotate(150deg) translate(0, -142%);
+    -moz-animation-delay: -0.5833s;
+}
+
+#quickZoom figure.spinner figure.bar7 {
+    -webkit-transform: rotate(180deg) translate(0, -142%);
+    -webkit-animation-delay: -0.5s;
+    -moz-transform: rotate(180deg) translate(0, -142%);
+    -moz-animation-delay: -0.5s;
+}
+
+#quickZoom figure.spinner figure.bar8 {
+    -webkit-transform: rotate(210deg) translate(0, -142%);
+    -webkit-animation-delay: -0.41667s;
+    -moz-transform: rotate(210deg) translate(0, -142%);
+    -moz-animation-delay: -0.41667s;
+}
+
+#quickZoom figure.spinner figure.bar9 {
+    -webkit-transform: rotate(240deg) translate(0, -142%);
+    -webkit-animation-delay: -0.333s;
+    -moz-transform: rotate(240deg) translate(0, -142%);
+    -moz-animation-delay: -0.333s;
+}
+
+#quickZoom figure.spinner figure.bar10 {
+    -webkit-transform: rotate(270deg) translate(0, -142%);
+    -webkit-animation-delay: -0.25s;
+    -moz-transform: rotate(270deg) translate(0, -142%);
+    -moz-animation-delay: -0.25s;
+}
+
+#quickZoom figure.spinner figure.bar11 {
+    -webkit-transform: rotate(300deg) translate(0, -142%);
+    -webkit-animation-delay: -0.1667s;
+    -moz-transform: rotate(300deg) translate(0, -142%);
+    -moz-animation-delay: -0.1667s;
+}
+
+#quickZoom figure.spinner figure.bar12 {
+    -webkit-transform: rotate(330deg) translate(0, -142%);
+    -webkit-animation-delay: -0.0833s;
+    -moz-transform: rotate(330deg) translate(0, -142%);
+    -moz-animation-delay: -0.0833s;
+}
+
+#quickZoom{
+    position: absolute ;
+    min-width: 50px;
+    min-height: 50px;
+    display: block;
+}
+
+@-webkit-keyframes fadeIn {
+    0%  {opacity:0;}
+    100%  {opacity:1;}
+}
+@-moz-keyframes fadeIn {
+    from  0% {opacity:0;}
+    to  100% {opacity:1;}
+}
+@-ms-keyframes fadeIn{
+    0%  {opacity:0;}
+    100%  {opacity: 1;}
+}
+@keyframes fadeIn{
+    0%  {opacity:0;}
+    100%  {opacity: 1;}
+}
+
+#quickZoom img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+
+    border-radius: 13px;
+
+    -webkit-animation: fadeIn 600ms ease-in;
+    -moz-animation: fadeIn 600ms ease-in;
+    -ms-animation: fadeIn 600ms ease-in;
+    animation: fadeIn 600ms ease-in;
+}

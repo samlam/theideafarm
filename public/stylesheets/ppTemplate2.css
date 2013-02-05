@@ -1,0 +1,36 @@
+body {
+}
+
+
+
+#ppt2Contact hr
+{
+    border: 1px solid #b6b6b6;
+    border-top:none;
+}
+#ppt2Control {
+    float: left;
+    padding-top: 90px;
+    padding-left: 15px;
+    opacity: .2;
+    line-height: 40px;
+}
+.ppt2Pic
+{
+    float:left;
+    border: 0px;
+    background-color: #feffe1;
+}
+#ppt2Img
+{
+    max-width: 740px;
+    width: 740px;
+    border-width: 0px;
+}
+#ppt2Contact .ppt2Content
+{
+    float:left;
+    width: 670px;
+    min-height: 260px; 
+    margin-left: 10px;
+}

@@ -1,0 +1,49 @@
+<div id="popupPanelBackdrop">
+    <div id="popupPanel">
+        <div id="ppBg"></div>
+        <div id="ppHeadBg"></div>
+        <a id="ppClose"  onclick="popupPanelHelper.hide()"> x </a>
+        <div id="ppBody">
+            <h1>owner (username)</h1>
+            <div class="pic">
+                <a href="<%=imgUrl%>" target="_blank"><img id="ppImg" alt="<%=title%>" src="<%=imgUrl%>"/></a>
+            </div>
+            <div class="content">
+                <h2>
+                    <input type="text" name="title" value="<%=title%>"/>
+                </h2>
+                <hr/>
+                <div class="details">
+                    <div id="ppDetailsViewer">
+                        <div id="inner" class="wiky_preview_area"></div>
+                    </div>
+                    <input type="hidden" name="postId" value="<%=postId%>"/>
+                    <textarea name="details"><%=details%></textarea>
+                </div>
+                <div class="tags"> 
+                    <ul id="ppTag" data-name="ppTag"></ul>
+                    &nbsp;
+                </div>
+                <div class="comment fragment"> &nbsp;</div>
+                <div class="comment fragment"> &nbsp;</div>
+            </div>
+            <div id="ppControl">
+                <a id="ppClickShare" href="javascript:document.notify('...', 'feature coming soon')">
+                    <img src="images/share.png" alt="alt" style="width:27px">
+                </a>
+                <br/>
+                <a id="ppClickRemove" href="javascript:document.notify('...', 'feature coming soon')">
+                    <img src="http://cdn-img.easyicon.cn/png/10697/1069720.gif" alt="alt" style="width:27px">
+                </a>
+                <br/>
+                <a id="ppClickHeart" href="javascript:document.notify('...', 'feature coming soon')">
+                    <img src="http://cdn-img.easyicon.cn/png/54/5420.gif" alt="alt" style="width:27px">
+                </a>
+                <br/>
+                <a id="ppClickSave" href="javascript:{document.toSavePost(); youtubePanelHelper.render();}">
+                    <img src="http://cdn-img.easyicon.cn/png/5490/549052.gif" alt="alt" style="width:27px">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

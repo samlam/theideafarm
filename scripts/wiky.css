@@ -1,0 +1,69 @@
+.wiky_preview_area {
+	color: #666;
+}
+.wiky_preview_area h2{
+	font-size:24px;
+	color:#333;
+	font-weight:400;
+	
+	text-shadow:0 1px 0 rgba(000, 000, 000, .4);
+}
+.wiky_preview_area h3{
+	font-size:18px;
+	color:#555;
+	font-weight:400;
+	
+	text-shadow:0 1px 0 rgba(000, 000, 000, .4);
+}
+.wiky_preview_area img{
+	background-repeat: repeat;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow:0 1px  3px rgba(0, 0, 0, .8);
+	-moz-box-shadow:0 1px  3px rgba(0, 0, 0, .8);
+	box-shadow:0 1px  3px rgba(0, 0, 0, .8);
+}
+.wiky_preview_area a{
+    color: #333;
+	padding-top:.1em;
+    padding-bottom: .1em;
+    padding-left: 5px;
+    padding-right: 5px;
+	text-decoration:none;
+	background: #cdcdcd; /* for non-css3 browsers */
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+	box-shadow:none;
+    text-shadow: none;
+}
+
+.wiky_preview_area a:hover{
+	color:#fff;
+	text-decoration:none;
+	
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+	-webkit-box-shadow:2px 3px .4em rgba(33,33,33,.55);
+	-moz-box-shadow:2px 3px .4em rgba(33,33,33,.55);
+	box-shadow:2px 3px .4em rgba(33,33,33,.55);
+
+}
+
+
+.wiky_preview_area > ol, 
+.wiky_preview_area > ol > li {
+	list-style: decimal inside none;
+}
+
+.wiky_preview_area > ul, 
+.wiky_preview_area > ul > li{
+    list-style: disc inside none;
+}

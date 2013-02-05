@@ -1,0 +1,47 @@
+extends layout
+block head
+    script(type='text/javascript', src='/scripts/jquery.iframe-transport.js')
+    script(type='text/javascript', src='/scripts/jquery.fileupload.js')
+    script(type='text/javascript')
+        $(function () {
+            $('#fileupload').fileupload({
+                dataType: 'json',
+                add: function (e, data) {
+                    var filename = data.files[0].name;
+                    data.context = $('<p/>').text('Uploading...' + filename).appendTo($('#filename'));
+                    data.submit();
+                },
+                progressall: function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $('#progress .bar').css(
+                        'width',
+                        progress + '%'
+                    );
+                },
+                done: function (e, data) {
+                    $.each(data.result, function (index, file) {
+                        $('<p/>').text(file.name).appendTo($('#filename'));
+                    });
+                }
+            });
+        });
+block content
+    input#fileupload(type='file', name='files[]', data-url='/upload', enctype='multipart/form-data')
+        p Upload file here
+        div#progress(style='width:600px')
+            div.bar(style='height:18px;background:green; width:0%')
+        p
+        div#filename
+    /// 
+        form(action='/upload', method='post', enctype='multipart/form-data')
+            p(style='height:50px')
+            p Data:
+                input(type='filename', name='filename')
+            p File 1:
+                input(type='file', name='file1')
+            p File 2:
+                input(type='file', name='file2')
+            p 
+                input(type='submit', value='Upload')
+
+

@@ -1,0 +1,115 @@
+extends layout
+
+block head
+        link(rel='stylesheet', type='text/css', href='/stylesheets/siteV2.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/popupPanel.css')
+    script(type='text/javascript', src='/scripts/appContentPopup.js')
+    script(type='text/javascript', src='/scripts/appMasonry.js')
+    script(type='text/javascript', src='/scripts/jquery.textareaExpander.js')
+    script(type='text/javascript')
+        var apiBasePath = '#{apiBasePath}';
+        var fileBasePath = apiBasePath + '/file/',
+            //postBasePath = apiBasePath + '/postUpdate/',
+            isLoading = false,
+            popupPostId = '',
+            popupTitle = null,
+            popupDetails = null;
+
+        var reloadPosts = function(data){
+            isLoading = true;
+            $.each(data, function(key, value){
+                //postItem(urlMainImage, details, title, postId, actions, comments)
+                postItem(fileBasePath + value.ImageFileId, value.Message, value.Title, value._id) ;
+            });
+            document.loadMasonry();
+        }
+        //need to protect masonry 
+        $(function(){
+            var $container = $('#column');
+
+            document.loadMasonry = function(){
+                $container.imagesLoaded(function () {
+                    $container.masonry({
+                        itemSelector: '.box',
+                        columnWidth: 0,
+                        isAnimated: true,
+                        animationOptions: {
+                            duration: 400
+                        }
+                    });
+                });
+            }
+
+            document.savePost = function(postId, title, details, imageFileId, sessionId, callback ){
+                var data = {
+                    title: title,
+                    message: details,
+                    imageFileId: imageFileId,
+                    sessionId: sessionId
+                };
+                $.post(apiBasePath + '/postUpdate/' + postId, data).error(function(){
+                    callback(new Error('save failed') );
+                });
+                document.updateBrick(postId, title, details);
+            }
+
+            document.updateBrick = function(postId, title, details){
+                var brick = $('div[postId=' + postId + ']');
+                brick.find('div.details p').text(details);
+            }
+
+            document.toSavePost = function(){
+                document.savePost(popupPostId, popupTitle.val(), popupDetails.val(), null, null, function(err, status){
+                    if (err) alert(err);
+                });
+                document.loadMasonry();
+            };
+        });
+        $(document).ready(function(){
+            popupTitle = $('div#popupBody div.popupContent h2 input[name="title"]');
+            popupDetails = $('div#popupBody div.popupContent div.details textarea[name="details"]');
+            popupDetails.textareaExpander();
+            popupDetails.blur(document.toSavePost);
+            popupTitle.blur(document.toSavePost);
+
+            //TODO: replace with Session
+            $.get(apiBasePath + "/postList/50b198cfaee84a500f000001?callback=reloadPosts" , reloadPosts, "json");
+
+            if (!isLoading){
+                var postList = document.createElement('script');
+                postList.type = 'text/javascript';
+                postList.src = apiBasePath + '/postList/50b198cfaee84a500f000001?callback=reloadPosts';
+                document.head.appendChild(postList);
+                document.head.removeChild(postList);
+            }
+
+        });
+
+
+block content
+
+    div#column.clearfix
+
+    div#popupContact
+        div#popupBg
+        a#popupContactClose x
+        div#popupBody
+            h1 User name
+            div.popupPic
+                img#popupImg
+            div.popupContent
+                h2
+                    input(type='text',name='title')
+                hr
+                div.details
+                    textarea(name='details')
+                div.popupComment.fragment comments here
+                div.popupComment.fragment comments here
+                div.popupComment.fragment comments here
+    div#backgroundPopup
+
+    div#popupPanel
+        div#ppBg
+        a#ppClose x
+        div#ppBody
+    div#ppBackdrop
