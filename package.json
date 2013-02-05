@@ -1,12 +1,12 @@
 {
-  "name": "WebMatrixExpressSite",
-  "version": "0.1.0",
-  "author": "The WebMatrix Team <webmatrix@microsoft.com>",
-  "description": "A simple boilerplate for building node applications on Windows Azure (or wherever)",
+  "name": "theideafarm",
+  "version": "0.0.1",
+  "author": "samlam.com",
+  "description": "blogging platform",
   "contributors": [ 
     {
-      "name": "Justin Beckwith",
-      "email": "justbe@microsoft.com"
+      "name": "Samuel Lam",
+      "email": "sam@samlam.com"
     } 
   ],  
   "main": "./server.js",  
