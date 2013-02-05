@@ -8,14 +8,15 @@ var isMobileUserAgent = function (req) {
     console.log(req.headers['user-agent']);
     var ua = uap.parse(req.headers['user-agent']),
         os = '';
-    if (ua.os) os = ua.os.toLowerCase();
+    if (ua.os) os = JSON.stringify(ua.os.family).toLowerCase();
+    console.log ('ua.os : ' + os );
     var found = false;
-    agents.forEach(function (e, index, array) {
-        if (os.indexOf(e) > -1) {
+    for( var i = 0; i < agents.length; i++){
+        if (os.indexOf( agents[i] ) > -1) {
             found = true;
-            return found;
+            break;
         }
-    });
+    };
     return found;
 }
 

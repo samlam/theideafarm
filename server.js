@@ -64,13 +64,14 @@ app.post('/upload', function (req, res, next) {
 app.get('/', routes.v2);
 
 //app.listen(process.env.port || 8000);   /// before express 3
-server.listen(process.env.port || global.APPPORT);
+server.listen(process.env.PORT || global.APPPORT);
 
 process.on('uncaughtException', function (e) {
     var msg = util.inspect(e, 5);
     console.log(msg);
 });
 
+console.log('physical path :' + __dirname);
 console.log("Express server listening on port %d in %s mode", server.address().port , app.settings.env);
 
 
