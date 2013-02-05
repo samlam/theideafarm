@@ -17,7 +17,6 @@ var setHeaders = function (req, res, next) {
     res.header("X-Powered-By", "nodejs");
     // if ajax set access control
     //if (req.xhr) { 
-    //res.header("Access-Control-Allow-Origin",'http://owa.samlam.com,http://owa.samlam.com:8001,http://owa.samlam.com:8000,http://w2k8dev1:8001,http://192.168.0.143:8001'); 
     res.header("Access-Control-Allow-Origin", '*');
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.header("X-UA-Compatible", "IE=edge,chrome=1");

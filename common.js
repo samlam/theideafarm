@@ -7,7 +7,7 @@
 /*
     Commmon object for imported modules
 */
-global.APIBASEPATH = 'http://lab.samlam.com:89';
+global.APIBASEPATH = 'http://api.samlam.com:89';
 global.APPPORT = 80;
 var common = {
     util : require('util'),         //from node
