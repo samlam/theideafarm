@@ -106,6 +106,7 @@ android dolphin
 android chrome
 
 ##Released
+* line-height in popuppanel is adjusted with the porportion of text box width
 * fixed : PostList api needs to sort before the limit
 * limited support with IE 9
 * Infinite Scroll

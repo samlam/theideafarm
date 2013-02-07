@@ -1,4 +1,4 @@
-/*popupPanel default template*/
+/*popupPanel default template - wide mode*/
 #popupPanel{
     display:block;
     height:auto;
@@ -127,6 +127,8 @@
 }
 
 #popupPanel #ppBody div.content div.details div#ppDetailsViewer {
+    font-size:.9em;
+    line-height : 1.6em;
     min-height: 40px;
 }
 
