@@ -2,15 +2,15 @@
 /**
  * Module dependencies.
  */
-var com = require('./common.js');
-var Express = require('express')
-    , routes = require('./routes')
-    , util = require('util')
-    , http = require('http');
+var com = require('./common');
+var express = require('express'), 
+    routes = require('./routes'),
+    util = require('util'),
+    http = require('http'),
+    securityManager = require('./lib/securityManager');
 
-//var app = module.exports = express.createServer();  /// before express 3
-var app = new Express();
-var server = http.createServer(app);
+var app = new express();
+//var server = http.createServer(app);
 
 var setHeaders = function (req, res, next) {
     
@@ -27,23 +27,31 @@ var setHeaders = function (req, res, next) {
 // Configuration
 app.configure(function () {
     app.use(setHeaders);
+    app.use(express.compress()); //needs to be high above the stack
+    app.use('/scripts', express.static(__dirname + '/scripts'));
+    app.use(express.static(__dirname + '/public'));
+    app.use(express.logger());  // can ignore requests above this line
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
     app.set('view options', { layout: false });
-    app.use(Express.compress());
-    app.use(Express.bodyParser({ keepExtensions: true, uploadDir: __dirname + '/public/uploads' }));
-    app.use(Express.methodOverride());
+    app.use(express.cookieParser());
+    app.use(express.bodyParser());
+    app.use(express.methodOverride());
+    app.use(express.session({
+        secret: com.sessionSecret,
+        cookie:{maxAge:60000}
+    }));
+    app.use(securityManager.passport.initialize());
+    app.use(securityManager.passport.session());
     app.use(app.router);
-    app.use(Express.static(__dirname + '/public'));
-    app.use('/scripts', Express.static(__dirname + '/scripts'));
 });
 
 app.configure('development', function(){
-    app.use(Express.errorHandler({ dumpExceptions: true, showStack: true }));
+    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('production', function(){
-    app.use(Express.errorHandler());
+    app.use(express.errorHandler());
 });
 
 // Routes
@@ -51,27 +59,53 @@ app.configure('production', function(){
 app.get('/upload', routes.upload);
 app.get('/upload2', routes.upload2);
 app.post('/upload', function (req, res, next) {
-    console.log(req.body);
+    //receive files
     console.log(req.files);
     //res.header('Content-Type', 'application/json');
     //return next();
     res.send(200);
 });
+app.get('/login', routes.login);
+app.post(
+    '/auth/local', 
+    securityManager.passportAuthenticate('local'),
+    function(req, res){
+        res.redirect('/');
+    }
+);
+
+app.get(
+    '/auth/google',
+    securityManager.passportAuthenticate('google'),
+    function(req, res){
+        // The request will be redirected to Google for authentication, so this
+        // function will not be called.
+    }
+);
+
+app.get(
+    '/auth/google/callback', 
+    securityManager.passportCallback('google'),
+    function(req, res) {
+        securityManager.authenticateUser(req, function(user){
+            res.redirect('/');
+        });
+    }
+);
 
 ///default landing page
 //app.get('/', routes.index);
 app.get('/', routes.v2);
 
-//app.listen(process.env.port || 8000);   /// before express 3
-server.listen(process.env.PORT || global.APPPORT);
+app.listen(process.env.PORT || 8000);   /// before express 3
+//server.listen(process.env.PORT);
+
 
 process.on('uncaughtException', function (e) {
     var msg = util.inspect(e, 5);
     console.log(msg);
 });
 
-console.log('physical path :' + __dirname);
-console.log("Express server listening on port %d in %s mode", server.address().port , app.settings.env);
-
-
+//console.log('physical path :' + __dirname);
+console.log("Express server listening on port %d in %s mode", process.env.PORT , app.settings.env);
 

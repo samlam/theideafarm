@@ -162,9 +162,14 @@ ul#menu li a {
     line-height: 2.7em;
     background-color: rgb(250, 245, 228);
     color: #EB5610;
-    border-radius: 4px 4px 0 0;
-    -webkit-border-radius: 4px 4px 0 0;
-    -moz-border-radius: 4px 4px 0 0;
+    border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    border-color: rgba(220,220,220,.9);
+    border-width: 0px;
+    border-left-width: 1px;
+    border-top-width: 1px;
+    border-style: solid;
 }
 
 ul#menu li a:hover {
@@ -262,6 +267,7 @@ div#title
     display: block;
     float: left;
     text-align: left;
+    margin-top:-.3em;
 }
 
 #logindisplay {
@@ -335,3 +341,12 @@ div#title
     width: 6em;
 }
 
+iframe#login {
+    display: block;
+    position: absolute;
+    top: 50px;
+    width: 51%;
+    height: 400px;
+    right: 24%;
+    left: 25%;
+}

@@ -1,6 +1,8 @@
 a personal blogging platform, written in node.js + express.js, is in early stage of development
 
 ##TODO
+* user authentication 
+* integrate with google g+ oauth
 * QuickZoom delayTimer doesn't work anymore
 * add <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 * trim function doesn't work in Safari
@@ -28,6 +30,7 @@ a personal blogging platform, written in node.js + express.js, is in early stage
 * play sound when notification is shown
 * mobile browser - address multi-touch http://www.queness.com/post/11755/11-multi-touch-and-touch-events-javascript-libraries
 * ignore certain tags when processing wiky in masonry.js
+* brick truncate posts that are way too long
 
 ##UX features
 * scroll to top
@@ -36,8 +39,6 @@ a personal blogging platform, written in node.js + express.js, is in early stage
 * when mouseover a brick, show the title in tooltip
 * ability to search posts (details/comments/tags) with the API
 * prevent right click on images / div
-* user authentication 
-* integrate with google g+ oauth
 * IE XSS feature is disabled by default (find workaround)
 * in popupPanel, click arrow icon to next post
 * change the sound with a bit more bass or lower tone
@@ -48,6 +49,7 @@ a personal blogging platform, written in node.js + express.js, is in early stage
 * refactor popupPanel css templates to update classnames (addClass/removeClass) instead of injecting css attributes
 * serving 304 on static files https://groups.google.com/forum/?fromgroups=#!topic/nodejs/ujsfiI8CKEs
 * to use typewriter sound-effect when loading the bricks / masonry
+* to include afterthedeadline api
 
 ##plugin/app feature
 * add lumosity-like feature (neruo science base exercise) to manage/ organize the posts

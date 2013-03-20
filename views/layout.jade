@@ -8,17 +8,19 @@ html(xmlns="http://www.w3.org/1999/xhtml", lang="en")
         script(type='text/javascript', src='/scripts/jquery-1.9.0.min.js')
         script(type='text/javascript', src='/scripts/jquery.infinitescroll.min.js')
         script(type='text/javascript', src='/scripts/jquery-ui-1.9.0.min.js')
+        script(type='text/javascript', src='/scripts/modules/route.js', defer)
         block head
     body
         div.page
             header
-                div#title
-                    h1 #{title}
                 nav
                     ul#menu
-                        li 
-                            a(href='/') Home
-                        li 
-                            a(href="/upload2") Add
+                        div#title
+                            h1
+                                a(href='/', style='text-decoration:none;display:block;') #{title}
+                        li
+                            a(href="/upload2/") Add
+                        li
+                            a(href="/login") Login
             section#main
                 block content

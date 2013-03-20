@@ -1,4 +1,5 @@
-var uap = require('ua-parser');//.parse(navigator.userAgent);
+var uap = require('ua-parser'),
+    com = require('../common');//.parse(navigator.userAgent);
 /*
  * GET home page.
  */
@@ -22,20 +23,30 @@ var isMobileUserAgent = function (req) {
 
 exports.index = function (req, res) {
     res.render('index', {
-        title: 'ideaFarm',
+        title: 'theideafarm',
         apiBasePath: global.APIBASEPATH,
         isMobile: isMobileUserAgent(req)
     });
 };
 
 exports.v2 = function (req, res) {
+    //console.log('user:' +  com.util.inspect( req.session.passport.user,false,5) );
+    //console.log('session:' + com.util.inspect(req.session, false, 5));
     res.render('v2', {
-        title: 'theideaFarm',
+        title: 'theideafarm',
         apiBasePath: global.APIBASEPATH,
         isMobile: isMobileUserAgent(req),
         userId: ''
     });
 };
+
+exports.login = function (req, res){
+    res.render('login',{
+        title: 'theideafarm',
+        apiBasePath: global.APIBASEPATH,
+        isMobile: isMobileUserAgent(req)
+    })
+}
 
 exports.upload = function (req, res) {
     res.render('upload', { title: 'theideaFarm - upload' });
@@ -43,7 +54,7 @@ exports.upload = function (req, res) {
 
 exports.upload2 = function (req, res) {
     res.render('upload2', {
-        title: 'theideaFarm',
+        title: 'theideafarm',
         apiBasePath: global.APIBASEPATH,
         isMobile: isMobileUserAgent(req)
     });
