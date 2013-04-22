@@ -5,7 +5,8 @@ block head
     script(type='text/javascript', src='/scripts/jquery.filedrop.js')
     script(type='text/javascript', src='/scripts/curl.js')
     script(type='text/javascript')
-        var isMobile = #{isMobile};
+        var isMobile = #{isMobile},
+            userId = '#{userId}';
         $(function(){
             curl({
                 baseUrl:'scripts'
@@ -26,7 +27,7 @@ block head
                 paramname:'pic',
                 maxfiles: 100,
                 maxfilesize: 10,
-                url: '#{apiBasePath}/upload',
+                url: '#{apiBasePath}/upload/' + encodeURIComponent(userId),
                 uploadFinished: function(i,file,response){
                     //$.data(file).find('.progress').width('100%');
                     $.data(file).addClass('done');

@@ -3,7 +3,8 @@ curl({
 });
 var apiBasePath = '',
     isMobile = false,
-    userId = '';
+    userId = '',
+    userObjectId = '';
 var fileBasePath = '',
     isLoading = false,
     popupPostId = '',
@@ -27,6 +28,7 @@ document.init = function (options) {
     apiBasePath = options.apiBasePath;
     isMobile = options.isMobile;
     userId = options.userId;
+    userObjectId = options.userObjectId;
     fileBasePath = apiBasePath + '/file/';
 
     $container = $('#column');
@@ -134,7 +136,7 @@ document.init = function (options) {
         document.getMasonry(function (m) {
             bSize = m.batchSize;
             $.ajax({
-                url: apiBasePath + "/postList/50b198cfaee84a500f000001/" + lastPostion + "?batchSize=" + bSize,
+                url: apiBasePath + "/postList/" + userObjectId + "/" + lastPostion + "?batchSize=" + bSize,   //50b198cfaee84a500f000001/
                 type: 'GET',
                 crossDomain: true,
                 error: function (xhr, status, err) {
@@ -190,7 +192,7 @@ document.init = function (options) {
             $container.css('-ms-filter', 'blur(0px)');
         }
         popupPanelHelper.imgOrientation = orientation;
-        popupPanelHelper.render(imgUrl, title, details, postId, style, function () {
+        popupPanelHelper.render(imgUrl, title, details, postId, style, userId, function () {
 
         });
 

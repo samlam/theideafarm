@@ -6,11 +6,11 @@ var uap = require('ua-parser'),
 
 var isMobileUserAgent = function (req) {
     var agents = ["android", "ios", "mobile"];
-    console.log(req.headers['user-agent']);
+    //console.log('isMobileUserAgent - ' + req.headers['user-agent']);
     var ua = uap.parse(req.headers['user-agent']),
         os = '';
     if (ua.os) os = JSON.stringify(ua.os.family).toLowerCase();
-    console.log ('ua.os : ' + os );
+    console.log ('routes.index.js.isMobileUserAgent - ua.os : ' + os );
     var found = false;
     for( var i = 0; i < agents.length; i++){
         if (os.indexOf( agents[i] ) > -1) {
@@ -30,13 +30,16 @@ exports.index = function (req, res) {
 };
 
 exports.v2 = function (req, res) {
-    //console.log('user:' +  com.util.inspect( req.session.passport.user,false,5) );
+    /*
+    if (req.session.passport.user)
+        console.log('routes.index.js.v2 - user:' +  com.util.inspect( req.session.passport.user,false,5) ); */
     //console.log('session:' + com.util.inspect(req.session, false, 5));
     res.render('v2', {
         title: 'theideafarm',
         apiBasePath: global.APIBASEPATH,
         isMobile: isMobileUserAgent(req),
-        userId: ''
+        userId: com.getSessionUserId(req),
+        userObjectId: com.getSessionUserObjectId(req)
     });
 };
 
@@ -56,7 +59,9 @@ exports.upload2 = function (req, res) {
     res.render('upload2', {
         title: 'theideafarm',
         apiBasePath: global.APIBASEPATH,
-        isMobile: isMobileUserAgent(req)
+        isMobile: isMobileUserAgent(req),
+        userId: com.getSessionUserId(req),
+        userObjectId: com.getSessionUserObjectId(req)
     });
 }
 

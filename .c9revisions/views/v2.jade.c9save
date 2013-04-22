@@ -4,3 +4,4 @@
 {"ts":1361522066578,"patch":[[{"diffs":[[0,"/main.js')\r\n    "],[1,"//"],[0,"script(type='tex"]],"start1":439,"start2":439,"length1":32,"length2":34}]],"length":1233,"saved":false}
 {"contributors":[],"silentsave":false,"ts":1361522108678,"patch":[[{"diffs":[[0,"    "],[-1,"//"],[0,"scri"]],"start1":451,"start2":451,"length1":10,"length2":8}]],"length":1231,"saved":false}
 {"contributors":[],"silentsave":false,"ts":1361561907422,"patch":[[{"diffs":[[0,"')\r\n"],[-1,"    script(type='text/javascript', src='/scripts/modules/route.js', defer)\r\n"],[0,"    "]],"start1":447,"start2":447,"length1":84,"length2":8}]],"length":1155,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1366524406346,"patch":[[{"diffs":[[0,"userId}'"],[1,",\r\n            userObjectId : '#{userObjectId}'"],[0,"\r\n      "]],"start1":1034,"start2":1034,"length1":16,"length2":63}]],"length":1202,"saved":false}

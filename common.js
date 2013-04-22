@@ -5,7 +5,7 @@
 
 global.APIHOST = 'api.samlam.com';
 global.APISERVER = 'http://' + global.APIHOST;
-global.APIPORT = 89;
+global.APIPORT = 80;
 global.APIBASEPATH = global.APISERVER + ':' + global.APIPORT;
 global.APPPORT = process.env.PORT || 80;
 global.HOSTURL = 'theideafarm.samlam.c9.io';
@@ -18,12 +18,17 @@ var common = {
     events : require('events'),     //from node
     fs : require('fs'),             //from node
     http : require('http'),         //from node
-    
     sessionSecret:'donttell',
     googleApi : {
         clientId:'912341550131.apps.googleusercontent.com',
         clientSecret:'6sSOXRNsywDWUrJ5pNMxmJr8',
         accessReturnUrl: global.HOSTURL + '/auth/google/callback'
+    },
+    getSessionUserId: function(req){
+        return (req.session.passport.user)? req.session.passport.user.UserName: "";
+    },
+    getSessionUserObjectId: function(req){
+        return (req.session.passport.user)? req.session.passport.user._id:"";
     }
 };
 

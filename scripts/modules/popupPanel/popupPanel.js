@@ -56,7 +56,7 @@ define([
                 'css                    /scripts/syntaxhighlighter/js/shBrushCss.js'
                 );*/
             },
-            render: function (imgUrl, title, details, postId, style, callback) {
+            render: function (imgUrl, title, details, postId, style, userId, callback) {
                 var self = this,
                     t = null,
                     tags = [],
@@ -64,7 +64,8 @@ define([
                         postId: postId,
                         title: title,
                         imgUrl: imgUrl,
-                        details: details
+                        details: details,
+                        userId : userId
                     };
 
                 t = _.template(self.template, tData);

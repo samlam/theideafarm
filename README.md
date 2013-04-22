@@ -1,8 +1,13 @@
-a personal blogging platform, written in node.js + express.js, is in early stage of development
+a personal blogging platform, written in node.js + mongodb, is in early stage of development
 
 ##TODO
-* user authentication 
-* integrate with google g+ oauth
+* upload2 needs to pass userObjectId (or username?) back to the Api
+* upload Api needs to handle userObjectId (or username?) validation logic
+* BUG viewport and backbone error in upload page
+* BUG cannot call methods on masonry prior to initialization; attempted to call method 'reload' jquery.masonry.js:457
+* BUG ArrayBuffer is deprecated in XMLHttpRequest.send(). Use ArrayBufferView instead. jquery.filedrop.js:480
+* Personal (username/userId)/ Public tab view
+* store session id (passport) in mongodb, for API to validate
 * QuickZoom delayTimer doesn't work anymore
 * add <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 * trim function doesn't work in Safari
@@ -108,6 +113,8 @@ android dolphin
 android chrome
 
 ##Released
+* integrate with google g+ oauth
+* user authentication with Google OAuth
 * line-height in popuppanel is adjusted with the porportion of text box width
 * fixed : PostList api needs to sort before the limit
 * limited support with IE 9

@@ -30,7 +30,7 @@ app.configure(function () {
     app.use(express.compress()); //needs to be high above the stack
     app.use('/scripts', express.static(__dirname + '/scripts'));
     app.use(express.static(__dirname + '/public'));
-    app.use(express.logger());  // can ignore requests above this line
+    //app.use(express.logger());  // can ignore requests above this line
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
     app.set('view options', { layout: false });
@@ -57,7 +57,9 @@ app.configure('production', function(){
 // Routes
 ///upload example
 app.get('/upload', routes.upload);
-app.get('/upload2', routes.upload2);
+app.get('/upload2', function(req,res,next){
+    securityManager.validateUser(req,res,routes.upload2);
+});
 app.post('/upload', function (req, res, next) {
     //receive files
     console.log(req.files);
@@ -95,7 +97,16 @@ app.get(
 
 ///default landing page
 //app.get('/', routes.index);
-app.get('/', routes.v2);
+app.get('/', function(req,res,next){
+    if (!req.session.passport.user){
+        res.writeHead(301,
+          {Location: '/auth/google'}
+        );
+        res.end();
+    }else{
+        routes.v2(req,res);
+    }
+});
 
 app.listen(process.env.PORT || 8000);   /// before express 3
 //server.listen(process.env.PORT);
