@@ -89,7 +89,7 @@ app.get(
     '/auth/google/callback', 
     securityManager.passportCallback('google'),
     function(req, res) {
-        securityManager.authenticateUser(req, function(user){
+        securityManager.authenticateUser(req, function(err, user){
             res.redirect('/');
         });
     }
@@ -97,15 +97,13 @@ app.get(
 
 ///default landing page
 //app.get('/', routes.index);
-app.get('/', function(req,res,next){
-    if (!req.session.passport.user){
-        res.writeHead(301,
-          {Location: '/auth/google'}
-        );
-        res.end();
-    }else{
-        routes.v2(req,res);
-    }
+app.get( '/', 
+    function(req,res,next){
+        if (!req.session.passport.user){
+            res.redirect('/auth/google');
+        }else{
+            routes.v2(req,res);
+        }
 });
 
 app.listen(process.env.PORT || 8000);   /// before express 3

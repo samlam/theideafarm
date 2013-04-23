@@ -2,6 +2,8 @@ extends layout
 block head
     link(rel='stylesheet', type='text/css', href='/stylesheets/siteV1.css')
     link(rel='stylesheet', type='text/css', href='/stylesheets/upload.css')
+    script(type='text/javascript', src='/scripts/underscore.min.js')
+    script(type='text/javascript', src='/scripts/backbone.min.js')
     script(type='text/javascript', src='/scripts/jquery.filedrop.js')
     script(type='text/javascript', src='/scripts/curl.js')
     script(type='text/javascript')
@@ -15,9 +17,7 @@ block head
             var dropbox = $('#dropbox'),
                 message = $('.message', dropbox);
                 
-            /*var addImagePost = function(){
-            }*/
-            curl(['modules/mobileViewPort']).then(function (viewPort) {
+            curl(['/scripts/modules/mobileViewPort']).then(function (viewPort) {
                 viewPort.isMobile = isMobile;
                 viewPort.set();
             });

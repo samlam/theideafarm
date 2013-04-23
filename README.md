@@ -3,9 +3,8 @@ a personal blogging platform, written in node.js + mongodb, is in early stage of
 ##TODO
 * upload2 needs to pass userObjectId (or username?) back to the Api
 * upload Api needs to handle userObjectId (or username?) validation logic
-* BUG viewport and backbone error in upload page
+* upload Api should require access or passport session Token
 * BUG cannot call methods on masonry prior to initialization; attempted to call method 'reload' jquery.masonry.js:457
-* BUG ArrayBuffer is deprecated in XMLHttpRequest.send(). Use ArrayBufferView instead. jquery.filedrop.js:480
 * Personal (username/userId)/ Public tab view
 * store session id (passport) in mongodb, for API to validate
 * QuickZoom delayTimer doesn't work anymore
@@ -113,6 +112,8 @@ android dolphin
 android chrome
 
 ##Released
+* fixed BUG viewport and backbone error in upload page
+* fixed BUG ArrayBuffer is deprecated in XMLHttpRequest.send(). Use ArrayBufferView instead. jquery.filedrop.js:480
 * integrate with google g+ oauth
 * user authentication with Google OAuth
 * line-height in popuppanel is adjusted with the porportion of text box width
