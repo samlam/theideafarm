@@ -157,9 +157,10 @@ ul#menu li#greeting {
 
 ul#menu li a {
     padding: 10px 20px;
+    font-size:.8em;
     font-weight: bold;
     text-decoration: none;
-    line-height: 2.7em;
+    line-height: 3.1em;
     background-color: rgb(250, 245, 228);
     color: #EB5610;
     border-radius: 5px 5px 0 0;

@@ -5,6 +5,7 @@ html(xmlns="http://www.w3.org/1999/xhtml", lang="en")
         meta(charset='utf-8')
         title= title
         link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Ubuntu' )
+        //link(rel='stylesheet', type='text/css', href='/stylesheets/menu.css')
         script(type='text/javascript', src='/scripts/jquery-1.9.0.min.js')
         script(type='text/javascript', src='/scripts/jquery.infinitescroll.min.js')
         script(type='text/javascript', src='/scripts/jquery-ui-1.9.0.min.js')
@@ -15,6 +16,7 @@ html(xmlns="http://www.w3.org/1999/xhtml", lang="en")
             header
                 nav
                     ul#menu
+                        //keep title here here so it will be clickable
                         div#title
                             h1
                                 a(href='/', style='text-decoration:none;display:block;') #{title}
