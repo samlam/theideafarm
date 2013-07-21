@@ -18,3 +18,7 @@
 {"ts":1366869297322,"patch":[[{"diffs":[[0,"Token\r\n*"],[1," (not a problem anymore)"],[0," BUG can"]],"start1":159,"start2":159,"length1":16,"length2":40}]],"length":8985,"saved":false}
 {"contributors":[],"silentsave":false,"ts":1366955272468,"patch":[[{"diffs":[[0,"##TODO\r\n"],[1,"* postList Api should return authorName\r\n"],[0,"* upload"]],"start1":96,"start2":96,"length1":16,"length2":57}]],"length":9026,"saved":false}
 {"ts":1366955508115,"patch":[[{"diffs":[[0,"orName\r\n"],[1,"* postList Api can return public posts\r\n"],[0,"* upload"]],"start1":137,"start2":137,"length1":16,"length2":56}]],"length":9066,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1367728639381,"patch":[[{"diffs":[[1,"exit"],[0,"a person"]],"start1":0,"start2":0,"length1":8,"length2":12}]],"length":9070,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1374439615490,"patch":[[{"diffs":[[-1,"exit"],[0,"a pe"]],"start1":0,"start2":0,"length1":8,"length2":4}]],"length":9066,"saved":false}
+{"ts":1374439665535,"patch":[[{"diffs":[[0,"##TODO\r\n"],[1,"* refactor with Angular.js\r\n"],[0,"* postLi"]],"start1":96,"start2":96,"length1":16,"length2":44}]],"length":9094,"saved":false}
+{"ts":1374439674064,"patch":[[{"diffs":[[0,"gular.js"],[1," (important!)"],[0,"\r\n* post"]],"start1":122,"start2":122,"length1":16,"length2":29}]],"length":9107,"saved":false}

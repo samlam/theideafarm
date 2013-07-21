@@ -1,6 +1,7 @@
 a personal blogging platform, written in node.js + mongodb, is in early stage of development
 
 ##TODO
+* refactor with Angular.js (important!)
 * postList Api should return authorName
 * postList Api can return public posts
 * upload Api should require access or passport session Token
