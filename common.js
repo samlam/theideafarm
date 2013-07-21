@@ -8,7 +8,7 @@ global.APISERVER = 'http://' + global.APIHOST;
 global.APIPORT = 89;
 global.APIBASEPATH = global.APISERVER + ':' + global.APIPORT;
 global.APPPORT = process.env.PORT || 80;
-global.HOSTURL = 'theideafarm.samlam.c9.io';
+global.HOSTURL = 'lab.samlam.com';
 
 /*
     Commmon object for imported modules and configurations
