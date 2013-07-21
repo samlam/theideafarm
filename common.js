@@ -20,8 +20,8 @@ var common = {
     http : require('http'),         //from node
     sessionSecret:'donttell',
     googleApi : {
-        clientId:'912341550131.apps.googleusercontent.com',
-        clientSecret:'6sSOXRNsywDWUrJ5pNMxmJr8',
+        clientId:'[GOOGLEAPI_CLIENTID]',
+        clientSecret:'[CLIENT_SECRET]',
         accessReturnUrl: global.HOSTURL + '/auth/google/callback'
     },
     getSessionUserId: function(req){
